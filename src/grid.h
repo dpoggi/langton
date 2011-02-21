@@ -2,7 +2,7 @@
 // Langton Copyright (C) 2011 Dan Poggi
 
 #ifndef LANGTON_GRID_H_
-#define LANGTON_GRID_H
+#define LANGTON_GRID_H_
 
 #include "visitor.h"
 
