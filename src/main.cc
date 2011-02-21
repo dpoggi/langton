@@ -1,9 +1,10 @@
 // main.cc
 // Langton Copyright (C) 2011 Dan Poggi
 
-#include <cstdio>
-#include "grid.h"
-#include "ant_visitor.h"
+#include <stdio.h>
+
+#include "src/grid.h"
+#include "src/ant_visitor.h"
 
 int main(int argc, char *argv[]) {
   int length, width, iterations, show_progress_step;
@@ -23,6 +24,6 @@ int main(int argc, char *argv[]) {
   Grid grid(length, width);
   AntVisitor ant(iterations, show_progress_step);
   grid.accept(&ant);
-  
+
   return 0;
 }

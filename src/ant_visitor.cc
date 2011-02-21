@@ -1,11 +1,13 @@
 // ant_visitor.cc - AntVisitor class implementation
 // Langton Copyright (C) 2011 Dan Poggi
 
-#include "ant_visitor.h"
-#include <cstdio>
-#include <cmath>
+#include "src/ant_visitor.h"
+
+#include <stdio.h>
 #include <unistd.h>
-#include "grid.h"
+#include <math.h>
+
+#include "src/grid.h"
 
 void AntVisitor::turn(int direction) {
   if (x_direction_ == 0) {
@@ -20,14 +22,14 @@ void AntVisitor::turn(int direction) {
 int AntVisitor::get_new_coordinate(int coordinate, int direction, int limit) {
   int return_value;
   int new_coordinate = coordinate + direction;
-  
+
   if (new_coordinate < 0)
     return_value = 0;
   else if (new_coordinate >= limit)
     return_value = limit - 1;
   else
     return_value = new_coordinate;
-    
+
   return return_value;
 }
 
@@ -39,9 +41,13 @@ void AntVisitor::move_forward() {
 void AntVisitor::print_current_state(Grid *grid, int iteration) {
   clear();
   grid->print();
-  
-  int percent_completed = floor((static_cast<double>(iteration) / static_cast<double>(steps_)) * 100.0);
-  printf("Iteration %d out of %d (%i%%)\n", iteration, steps_, percent_completed);
+
+  int percent_completed = floor((static_cast<double>(iteration) /
+        static_cast<double>(steps_)) * 100.0);
+  printf("Iteration %d out of %d (%i%%)\n",
+      iteration,
+      steps_,
+      percent_completed);
 
   putchar('<');
   for (int i = 0; i < 100; ++i)
@@ -54,10 +60,10 @@ void AntVisitor::visit(Grid *grid) {
   width_ = grid->width();
   x_ = width_ / 2;
   y_ = length_ / 2;
-  
+
   for (int i = 0; i < steps_; ++i) {
     turn(grid->node(x_, y_) ? -1 : 1);
-      
+
     grid->flip_node(x_, y_);
     move_forward();
 
@@ -66,7 +72,8 @@ void AntVisitor::visit(Grid *grid) {
       usleep(30000);
     }
   }
-  
+
   if (show_progress_step_ > steps_)
     grid->print();
 }
+

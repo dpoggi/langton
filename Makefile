@@ -1,7 +1,4 @@
-CXX = g++
-CXXFLAGS = -O2 -Wall -o
-DEBUGFLAGS =
-RM = rm -f
+include Makefile.inc
 
 INCLUDES = $(wildcard src/*.h)
 OBJECTS = $(patsubst src/%.cc,obj/%.o,$(wildcard src/*.cc))
@@ -13,8 +10,7 @@ clean:
 	$(RM) $(TARGET) $(OBJECTS)
 
 $(TARGET):	$(OBJECTS)
-	$(CXX) $(DEBUGFLAGS) $(CXXFLAGS) $(TARGET) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o $(TARGET) $(OBJECTS)
 
 $(OBJECTS):	obj/%.o : src/%.cc $(INCLUDES)
-	$(CXX) -c $(DEBUGFLAGS) $(CXXFLAGS) $@ $<
-
+	$(CXX) -c -I. $(CXXFLAGS) -o $@ $<
