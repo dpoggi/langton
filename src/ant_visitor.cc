@@ -6,8 +6,7 @@
 #include <cmath>
 #include "grid.h"
 
-void AntVisitor::turn(int direction)
-{
+void AntVisitor::turn(int direction) {
   if (x_direction_ == 0) {
     x_direction_ = (y_direction_ < 0) ? direction : -direction;
     y_direction_ = 0;
