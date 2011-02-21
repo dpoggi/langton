@@ -22,7 +22,12 @@ Grid::~Grid() {
 }
 
 void Grid::print() const {
-  for (int i = 0; i < length_; ++i)
-    puts(grid_[i]);
+  for (int i = 0; i < length_; ++i) {
+    for (int j = 0; j < width_; ++j) {
+      putchar(grid_[i][j]);
+    }
+    putchar('\n');
+  }
+
   putchar('\n');
 }
