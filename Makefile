@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -O2 -Wall -o
-DEBUGFLAGS = -g
+DEBUGFLAGS =
 RM = rm -f
 
 INCLUDES = $(wildcard src/*.h)
