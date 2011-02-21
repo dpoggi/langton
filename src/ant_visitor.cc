@@ -4,6 +4,7 @@
 #include "ant_visitor.h"
 #include <cstdio>
 #include <cmath>
+#include <unistd.h>
 #include "grid.h"
 
 void AntVisitor::turn(int direction) {
