@@ -1,6 +1,6 @@
-include Makefile.inc
+CXXFLAGS = -I. -O2 -Wall
+RM = rm -f
 
-INCLUDES = $(wildcard src/*.h)
 OBJECTS = $(patsubst src/%.cc,obj/%.o,$(wildcard src/*.cc))
 TARGET = bin/langton
 
@@ -10,7 +10,7 @@ clean:
 	$(RM) $(TARGET) $(OBJECTS)
 
 $(TARGET):	$(OBJECTS)
-	$(LD) $(LDFLAGS) -o $(TARGET) $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-$(OBJECTS):	obj/%.o : src/%.cc $(INCLUDES)
-	$(CXX) -c -I. $(CXXFLAGS) -o $@ $<
+obj/%.o:	src/%.cc
+	$(CXX) $(CXXFLAGS) -c -o $@ $^
