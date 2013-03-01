@@ -3,4 +3,4 @@ A little toy I made when I was bored one (late, late) evening. Make it, run bin/
 
 ## Copyright
 
-Copyright (C) 2012 Dan Poggi. MIT License, see LICENSE for details.
+Copyright (C) 2011 Dan Poggi. MIT License, see LICENSE for details.
