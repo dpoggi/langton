@@ -9,7 +9,7 @@
 
 #include "src/grid.h"
 
-void AntVisitor::turn(int direction) {
+void AntVisitor::Turn(int direction) {
   if (x_direction_ == 0) {
     x_direction_ = (y_direction_ < 0) ? direction : -direction;
     y_direction_ = 0;
@@ -19,7 +19,7 @@ void AntVisitor::turn(int direction) {
   }
 }
 
-int AntVisitor::get_new_coordinate(int coordinate, int direction, int limit) {
+int AntVisitor::GetNewCoordinate(int coordinate, int direction, int limit) {
   int return_value;
   int new_coordinate = coordinate + direction;
 
@@ -33,14 +33,14 @@ int AntVisitor::get_new_coordinate(int coordinate, int direction, int limit) {
   return return_value;
 }
 
-void AntVisitor::move_forward() {
-  x_ = get_new_coordinate(x_, x_direction_, width_);
-  y_ = get_new_coordinate(y_, y_direction_, length_);
+void AntVisitor::MoveForward() {
+  x_ = GetNewCoordinate(x_, x_direction_, width_);
+  y_ = GetNewCoordinate(y_, y_direction_, length_);
 }
 
-void AntVisitor::print_current_state(Grid *grid, int iteration) {
-  clear();
-  grid->print();
+void AntVisitor::PrintCurrentState(Grid *grid, int iteration) {
+  Clear();
+  grid->Print();
 
   int percent_completed = floor((static_cast<double>(iteration) /
         static_cast<double>(steps_)) * 100.0);
@@ -55,25 +55,24 @@ void AntVisitor::print_current_state(Grid *grid, int iteration) {
   printf(">\n");
 }
 
-void AntVisitor::visit(Grid *grid) {
+void AntVisitor::Visit(Grid *grid) {
   length_ = grid->length();
   width_ = grid->width();
   x_ = width_ / 2;
   y_ = length_ / 2;
 
   for (int i = 0; i < steps_; ++i) {
-    turn(grid->node(x_, y_) ? -1 : 1);
+    Turn(grid->node(x_, y_) ? -1 : 1);
 
-    grid->flip_node(x_, y_);
-    move_forward();
+    grid->FlipNode(x_, y_);
+    MoveForward();
 
     if (i + 1 >= show_progress_step_) {
-      print_current_state(grid, i + 1);
+      PrintCurrentState(grid, i + 1);
       usleep(30000);
     }
   }
 
   if (show_progress_step_ > steps_)
-    grid->print();
+    grid->Print();
 }
-

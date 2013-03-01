@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-void Grid::init() {
+void Grid::Init() {
   grid_ = new char*[length_];
   for (int i = 0; i < length_; ++i)
     grid_[i] = new char[width_];
@@ -22,7 +22,7 @@ Grid::~Grid() {
   delete[] grid_;
 }
 
-void Grid::print() const {
+void Grid::Print() const {
   for (int i = 0; i < length_; ++i) {
     for (int j = 0; j < width_; ++j) {
       putchar(grid_[i][j]);

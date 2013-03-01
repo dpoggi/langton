@@ -18,20 +18,18 @@ class AntVisitor : public Visitor {
         x_direction_(0),
         y_direction_(1) {}
 
-  virtual void visit(class Grid *grid);
+  virtual void Visit(class Grid *grid);
 
  private:
   int steps_, show_progress_step_,
       x_, y_, x_direction_, y_direction_,
       length_, width_;
 
-  void clear() const { system("clear"); }
-
-  void turn(int direction);
-  int get_new_coordinate(int coordinate, int direction, int limit);
-  void move_forward();
-
-  void print_current_state(Grid *grid, int iteration);
+  void Clear() const { system("clear"); }
+  void Turn(int direction);
+  int GetNewCoordinate(int coordinate, int direction, int limit);
+  void MoveForward();
+  void PrintCurrentState(Grid *grid, int iteration);
 };
 
 #endif  // ANT_VISITOR_H_

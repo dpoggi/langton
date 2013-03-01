@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
   Grid grid(length, width);
   AntVisitor ant(iterations, show_progress_step);
-  grid.accept(&ant);
+  grid.Accept(&ant);
 
   return 0;
 }

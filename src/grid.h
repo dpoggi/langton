@@ -8,24 +8,24 @@
 
 class Grid {
  public:
-  Grid(int length, int width) : length_(length), width_(width) { init(); }
+  Grid(int length, int width) : length_(length), width_(width) { Init(); }
   ~Grid();
 
   int length() const { return length_; }
   int width() const { return width_; }
 
   bool node(int x, int y) const { return grid_[y][x] == ' '; }
-  void flip_node(int x, int y) { grid_[y][x] = node(x, y) ? '#' : ' '; }
+  void FlipNode(int x, int y) { grid_[y][x] = node(x, y) ? '#' : ' '; }
 
-  void accept(Visitor *visitor) { visitor->visit(this); }
+  void Accept(Visitor *visitor) { visitor->Visit(this); }
 
-  void print() const;
+  void Print() const;
 
  private:
   int length_, width_;
   char **grid_;
 
-  void init();
+  void Init();
 };
 
 #endif  // GRID_H_

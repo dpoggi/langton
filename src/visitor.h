@@ -7,7 +7,7 @@
 class Visitor {
  public:
   virtual ~Visitor() {}
-  virtual void visit(class Grid *grid) = 0;
+  virtual void Visit(class Grid *grid) = 0;
 };
 
 #endif  // VISITOR_H_
