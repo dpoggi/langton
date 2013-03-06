@@ -1,4 +1,19 @@
-bin/*
-!bin/.gitignore
-obj/*
-!obj/.gitignore
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Binary directories
+/bin/*
+!/bin/.gitkeep
+/obj/*
+!/obj/.gitkeep
